@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile - Estate Network</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f6f9;
+            padding-top: 120px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: inherit;
+        }
+        .icons{
+            color:#fff;
+            margin-left:auto;
+            display:flex;
+            gap:20px;
+            height:100%;
+            align-items:center;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #0B3c5D;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .profile-icon {
+            margin-left: auto;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .profile-pic-section {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #0B3c5D;
+        }
+
+        .info-group {
+            margin-bottom: 15px;
+        }
+
+        .info-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .info-group p {
+            margin: 0;
+            padding: 10px;
+            background: #f4f6f9;
+            border-radius: 5px;
+            color: #333;
+        }
+
+        .edit-btn {
+            margin-top: 20px;
+            display: inline-block;
+            background: #2196F3;
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .edit-btn:hover {
+            background: #0b7dda;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                display:grid;
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="{{url_for('index')}}"><h3 class="logo">ESN</h3></a>
+    <div class = "icons">
+     <a href="{{url_for('estateNet')}}"><i class="fa fa-hand-o-left fa-3x" ></i></a>
+    </div>
+</header>
+
+<div class="container">
+    <div class="profile-pic-section">
+        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+    </div>
+
+    <div>
+        <div class="info-group">
+            <label>Name</label>
+            <p>{{name}}</p>
+        </div>
+
+        <div class="info-group">
+            <label>Email</label>
+            <p>{{email}}</p>
+        </div>
+
+        <div class="info-group">
+            <label>Phone Number</label>
+            <p>{{phoneNo}}</p>
+        </div>
+
+        <div class="info-group">
+            <label>House / Flat Number</label>
+            <p>{{house}}</p>
+        </div>
+
+        <div class="info-group">
+            <label>Role</label>
+            <p>{{role}}</p>
+        </div>
+
+        <div class="info-group">
+            <label>Apartment Type</label>
+            <p>{{aptType}}</p>
+        </div>
+
+
+        <div class="info-group">
+            <label>Emergency Contact</label>
+            <p>{{emergency}}</p>
+        </div>
+
+        <div class="info-group">
+            <label>About Me</label>
+            <p>{{about}}</p>
+        </div>
+
+        <a href="{{url_for('editProfile')}}" class="edit-btn">
+            <i class="fa fa-edit"></i> Edit Profile
+        </a>
+    </div>
+</div>
+
+</body>
+</html>

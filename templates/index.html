@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Estate Network</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        *{
+            box-sizing:border-box;
+        }
+
+        a{
+            text-decoration:none;
+            font-size:1.1rem;
+            font-weight:bold;
+        }
+
+        header{
+            display:flex;
+            align-items:center;
+            background-color:#0B3c5D;
+            top:0;
+            left:0;
+            position: fixed;
+            width:100%;
+            height:100px;
+            z-index: 10;
+            padding:0 20px;
+        }
+
+        .logo{
+            color:#fff;
+            font-weight:bold;
+            font-size:2rem;
+        }
+
+        header #myLink{
+            margin-left:auto;
+            color:#fff;
+            font-size:1.2rem;
+        }
+
+        header #myLink:hover{
+            color:#cfe3ff;
+        }
+
+        .mainBody{
+            margin-top:100px;
+        }
+
+        .welcome{
+            width:100%;
+            min-height:400px;
+            display:flex;
+            background-color:#F4F6F8;
+            padding:40px 20px;
+            align-items:center;
+            justify-content:space-between;
+            gap:20px;
+            flex-wrap:wrap;
+        }
+
+        .one{
+            display:flex;
+            flex-direction:column;
+            max-width:500px;
+        }
+
+        .one h1{
+            color:#2e2e2e;
+            font-size:2.2rem;
+            margin-bottom:10px;
+        }
+
+        .one p{
+            font-size:1.2rem;
+            color:#444;
+            margin-bottom:20px;
+        }
+
+        .links{
+            display:flex;
+            gap:15px;
+            flex-wrap:wrap;
+        }
+
+        .one a{
+            border-radius:5px;
+            padding:10px 15px;
+            transition:0.2s ease;
+        }
+
+        #join{
+            color:#fff;
+            background-color:#0B3c5D;
+        }
+
+        #join:hover{
+            background-color:#fff;
+            color:#0B3c5D;
+            border:1px solid #0B3c5D;
+        }
+
+        #login{
+            color:#0B3c5D;
+            background-color:#fff;
+            border:1px solid #0B3c5D;
+        }
+
+        #login:hover{
+            background-color:#0B3c5D;
+            color:#fff;
+        }
+
+        .welcome img{
+            width:100%;
+            max-width:400px;
+            height:auto;
+            border-radius:10px;
+        }
+
+        .infoCards{
+            display:flex;
+            margin-top:50px;
+            width:100%;
+            gap:20px;
+            justify-content:center;
+            align-items:stretch;
+            flex-wrap:wrap;
+            padding:0 20px;
+        }
+
+        .myCard{
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            width:280px;
+            padding:20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            border-radius:10px;
+            background:#fff;
+            transition:0.2s ease;
+        }
+
+        .myCard:hover{
+            transform:translateY(-5px);
+        }
+
+        .myCard h2{
+            margin-bottom:5px;
+        }
+
+        .myCard i{
+            font-size:50px;
+            color:#0B3c5D;
+            margin-bottom:10px;
+        }
+
+        .myCard a{
+            color:#1F6AE1;
+        }
+
+        .myCard a:hover{
+            color:#2e2e2e;
+        }
+
+        .myCard p{
+            font-size:1rem;
+            color:#2e2e2e;
+            text-align:center;
+        }
+
+        footer{
+            margin-top:50px;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            background-color:#0B3c5D;
+            color:#fff;
+            width:100%;
+            padding:15px;
+        }
+
+        @media (max-width: 768px){
+            .welcome{
+                flex-direction:column;
+                text-align:center;
+            }
+
+            .links{
+                justify-content:center;
+            }
+        }
+    </style>
+</head>
+
+<script src="https://kit.fontawesome.com/4b94c35dd1.js" crossorigin="anonymous"></script>
+
+<body>
+<header>
+    <a href="index.html"><h3 class="logo">Estate Network</h3></a>
+    <a id="myLink" href="{{url_for('register')}}">Register / Login</a>
+</header>
+
+<section class="mainBody">
+    <section class="welcome">
+        <div class="one">
+            <h1>Welcome to the Estate Network</h1>
+            <p>Connect with your neighbours. Stay informed, stay connected and grow your network.</p>
+            <div class="links">
+                <a href="{{url_for('register')}}" id="join">Join Now</a>
+                <a href="{{url_for('register')}}" id="login">Login</a>
+            </div>
+        </div>
+
+        <img src="/static/land.webp" alt="Residential estate">
+    </section>
+
+    <section class="infoCards">
+        <div class="myCard">
+            <i class="fa-regular fa-calendar"></i>
+            <h2>Upcoming Events</h2>
+            <p>Stay informed about estate gatherings and other activities.</p>
+            <a href="learn.html">Learn More &gt;</a>
+        </div>
+
+        <div class="myCard">
+            <i class="fa-solid fa-bullhorn"></i>
+            <h2>Announcements</h2>
+            <p>Get important updates and news about your estate.</p>
+            <a href="learn.html">Learn More &gt;</a>
+        </div>
+
+        <div class="myCard">
+            <i class="fa-regular fa-address-book"></i>
+            <h2>Estate Directory</h2>
+            <p>Find and connect with your neighbours.</p>
+            <a href="learn.html">Learn More &gt;</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Estate Network. All Rights Reserved.</p>
+    </footer>
+</section>
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Login/signup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        header{
+            display:flex;
+            align-items:center;
+            background-color:#0B3c5D;
+            top:0;
+            left:0;
+            position: fixed;
+            width:100%;
+            height:100px;
+            z-index: 10;
+        }
+        a{
+            text-decoration:none;
+        }
+        .logo{
+            color:#fff;
+            font-weight:bold;
+            font-size:2rem;
+            margin-left:10px;
+        }
+        .mainBody{
+            margin-top:100px;
+            background-color:#F4F6F8;
+            width:100%;
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:20px;
+            box-sizing: border-box;
+        }
+        #controlButtons{
+            display:flex;
+            width:100%;
+            background-color:#0B3c5D;
+            border-radius:15px;
+            overflow: hidden;
+        }
+        .box{
+            background-color:#FFFDFA;
+            width:90%;
+            max-width:900px;
+            min-height:500px;
+            display:flex;
+            box-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            border-radius:15px;
+            overflow:hidden;
+        }
+        .logorreg{
+            width:50%;
+            padding:15px;
+            box-sizing: border-box;
+        }
+        .control{
+            width:100%;
+            background-color:#0B3c5D;
+            color:#fff;
+            font-weight:bold;
+            font-size:20px;
+            border:none;
+            cursor:pointer;
+            padding:10px 0;
+        }
+        #signSwitch{
+            background-color:#FFFDFA;
+            color:#0B3c5D;
+        }
+        #login, #register{
+            display:flex;
+            flex-direction:column;
+            gap:10px;
+            width:100%;
+            justify-content:center;
+            align-items:center;
+            padding:10px;
+        }
+        #login{
+            display:none;
+        }
+        input{
+            border-radius:10px;
+            height:35px;
+            font-size:16px;
+            width:100%;
+            border:none;
+            box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            padding-left:8px;
+            box-sizing:border-box;
+        }
+        .logReg{
+            background-color:#0B3c5D;
+            width:60%;
+            height:40px;
+            border-radius:15px;
+            color:#FFFDFA;
+            font-size:16px;
+            border:none;
+            cursor:pointer;
+            margin-top:20px;
+        }
+        label{
+            font-size:16px;
+            font-weight:bold;
+            color:#0B3c5D;
+            align-self:flex-start;
+        }
+        .image{
+            width:50%;
+        }
+        .image img{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+
+        @media (max-width: 768px){
+            .box{
+                flex-direction:column;
+            }
+            .logorreg, .image{
+                width:100%;
+            }
+            .image{
+                display:none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="{{url_for('index')}}"><h3 class="logo">ESN</h3></a>
+</header>
+
+<section class="mainBody">
+    <section class="box">
+
+        <section class="logorreg">
+            <div id="controlButtons">
+                <button class="control" id="signSwitch" type="button">Sign up</button>
+                <button class="control" id="logSwitch" type="button">Login</button>
+            </div>
+
+            <form action = "{{url_for('tryLogin')}}" method="post" id="login">
+                <label for="email">Email</label>
+                <input name = "email" placeholder="Enter email" type="email" id="email">
+
+                <label for="password">Password</label>
+                <input name="password" placeholder="Enter password" type="password" id="password">
+
+                <button type="submit" class="logReg" id="loginBtn" type="button">Login</button>
+            </form>
+
+            <form action = "{{url_for('tryRegister')}}" id="register" method='post'>
+                <label for="fname">Full Name</label>
+                <input name = "fname" placeholder="Enter First name" type="text" id="fname">
+
+                <label for="lname">Full Name</label>
+                <input name = "lname" placeholder="Enter Last name" type="text" id="lname">
+
+                <label for="newEmail">Email</label>
+                <input name = "newEmail" placeholder="Enter email" type="email" id="newEmail">
+
+                <label for="phoneNo">Phone Number</label>
+                <input name="phoneNo" placeholder="Enter phone no" type="tel" id="phoneNo">
+
+                <label for="newPassword">Password</label>
+                <input name = "newPassword" placeholder="Enter password" type="password" id="newPassword">
+
+                <label for="newCPassword">Confirm Password</label>
+                <input placeholder="Confirm password" type="password" id="newCPassword">
+
+                <button type = "submit" class="logReg" id="regButton" type="button">Register</button>
+            </form>
+        </section>
+
+        <div class="image">
+            <img src="static/estateNet.jpg" alt="cities connected to a network">
+        </div>
+
+    </section>
+</section>
+
+<script>
+    const register = document.getElementById("register");
+    const login = document.getElementById("login");
+    const logSwitch = document.getElementById("logSwitch");
+    const signSwitch = document.getElementById("signSwitch");
+
+    logSwitch.addEventListener("click", () => {
+        register.style.display = "none";
+        login.style.display = "flex";
+
+        logSwitch.style.backgroundColor = "#FFFDFA";
+        logSwitch.style.color = "#0B3c5D";
+
+        signSwitch.style.backgroundColor = "#0B3c5D";
+        signSwitch.style.color = "#FFFDFA";
+    });
+
+    signSwitch.addEventListener("click", () => {
+        login.style.display = "none";
+        register.style.display = "flex";
+
+        signSwitch.style.backgroundColor = "#FFFDFA";
+        signSwitch.style.color = "#0B3c5D";
+
+        logSwitch.style.backgroundColor = "#0B3c5D";
+        logSwitch.style.color = "#FFFDFA";
+    });
+
+    document.getElementById("regButton").addEventListener("click", () => {
+        const pass = document.getElementById("newPassword").value;
+        const cpass = document.getElementById("newCPassword").value;
+        const fname = document.getElementById("fname").value;
+        const newEmail = document.getElmentById("newEmail").value;
+        const phoneNo = document.getElementById("phoneNo").value;
+
+        if (!pass || !cpass || !newEmail || !phoneNo) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        if (pass !== cpass) {
+            alert("Passwords do not match!");
+            return;
+        }
+
+        
+    });
+
+    document.getElementById("loginBtn").addEventListener("click", () => {
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+
+        if (!email || !password) {
+            alert("Please fill in all fields.");
+            return;
+        }
+
+        
+    });
+</script>
+
+</body>
+</html>

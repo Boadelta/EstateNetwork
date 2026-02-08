@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Estate Network</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background: #f4f6f8;
+      }
+
+      .profileLink{
+          text-decoration:none;
+          color:#fff;
+        }
+
+      a {
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        background-color: #0B3C5D;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 90px;
+        z-index: 10;
+        padding: 0 20px;
+      }
+
+      .logo {
+        color: #fff;
+        font-weight: bold;
+        font-size: 2rem;
+      }
+
+      form.search {
+        margin-left: auto;
+        margin-right: 20px;
+        display: flex;
+        width: 300px;
+      }
+
+      form.search input[type=search] {
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        width: 80%;
+        border-radius: 4px 0 0 4px;
+      }
+
+      form.search button {
+        width: 20%;
+        padding: 10px;
+        background: #1F6AE1;
+        color: #fff;
+        font-size: 16px;
+        border: 1px solid #1F6AE1;
+        border-left: none;
+        cursor: pointer;
+        border-radius: 0 4px 4px 0;
+      }
+
+      form.search button:hover {
+        background: #0b7dda;
+      }
+
+      .profile {
+        color: #fff;
+        font-size: 32px;
+        cursor: pointer;
+        margin-left: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .profile span {
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      /* Main Content */
+      .container {
+        margin-top: 120px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 20px;
+      }
+
+      .post {
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      }
+
+      .post-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+
+      .post-header i {
+        font-size: 28px;
+        color: #0B3C5D;
+        margin-right: 10px;
+      }
+
+      .post-title {
+        font-weight: bold;
+        font-size: 1.1rem;
+        color: #0B3C5D;
+      }
+
+      .post-date {
+        margin-left: auto;
+        font-size: 0.9rem;
+        color: #6b7280;
+      }
+
+      .post-content {
+        margin-top: 10px;
+        color: #2e2e2e;
+        line-height: 1.6;
+      }
+        h1{
+            text-align:center;
+            color:#0B3C5D;
+            margin-bottom:20px;
+        }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <a href = "{{url_for('index')}}"><h3 class="logo">ESN</h3></a>
+
+      <form class="search">
+        <input type="search" id="searchItem" placeholder="Search for a Neighbour">
+        <button type="submit">
+          <i class="fa fa-search"></i>
+        </button>
+      </form>
+
+      <div class="profile">
+       <a class="profileLink" href = "{{url_for('viewProfile')}}"><i class="fa fa-user-circle"></i>
+        <span>Profile</span></a>
+      </div>
+    </header>
+
+    <div class="container">
+     <h1> WELCOME {{name}}</h1>
+      <div class="post">
+        <div class="post-header">
+          <i class="fa fa-bullhorn"></i>
+          <div class="post-title">Estate Management Announcement</div>
+          <div class="post-date">Feb 1, 2026</div>
+        </div>
+        <div class="post-content">
+          Dear residents, please be informed that there will be a scheduled water supply maintenance
+          tomorrow from 10am – 2pm. We apologize for any inconvenience this may cause.
+          <br><br>
+          Thank you for your cooperation.
+        </div>
+      </div>
+
+      <!-- Another Sample Post -->
+      <div class="post">
+        <div class="post-header">
+          <i class="fa fa-bell"></i>
+          <div class="post-title">Security Update</div>
+          <div class="post-date">Jan 30, 2026</div>
+        </div>
+        <div class="post-content">
+          Please ensure all visitors are properly logged in at the gate. This is to help improve
+          security within the estate.
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

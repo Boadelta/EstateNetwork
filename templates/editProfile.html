@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Profile - Estate Network</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f4f6f9;
+            padding-top: 120px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: #0B3c5D;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            padding: 0 20px;
+        }
+
+        .logo {
+            color: #fff;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        .profile-icon {
+            margin-left: auto;
+            color: #fff;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+        }
+
+        .profile-pic-section {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #0B3c5D;
+        }
+
+        .upload-btn {
+            margin-top: 15px;
+        }
+
+        .upload-btn input {
+            display: none;
+        }
+
+        .upload-btn label {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #0B3c5D;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 80px;
+        }
+
+        .save-btn {
+            margin-top: 20px;
+            background: #2196F3;
+            color: #fff;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .save-btn:hover {
+            background: #0b7dda;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <a href="index.html"><h3 class="logo">ESN</h3></a>
+    <i class="fa fa-user profile-icon"></i>
+</header>
+
+<div class="container">
+    <div class="profile-pic-section">
+        <!-- <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">-->
+        <div class="upload-btn">
+            <label for="photo">Upload Photo</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+        </div>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="first_name" placeholder="Enter your First name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" placeholder="Enter your Last name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Email (cannot be changed)</label>
+            <input type="email" name="email" placeholder="user@email.com" disabled>
+        </div>
+
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" name="phone" placeholder="Enter phone number" required>
+        </div>
+
+        <div class="form-group">
+            <label>House / Flat Number</label>
+            <input type="text" name="house_no" placeholder="e.g Block A, Flat 3" required>
+        </div>
+
+        <div class="form-group">
+            <label>Role</label>
+            <select name="role" required>
+                <option value="">Select role</option>
+                <option value="Resident">Resident</option>
+                <option value="Tenant">Tenant</option>
+                <option value="Owner">Owner</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Apartment Type</label>
+            <input type="text" name="apartment_type" placeholder="e.g 2 Bedroom Flat, Duplex">
+        </div>
+
+
+
+        <div class="form-group">
+            <label>Emergency Contact Name</label>
+            <input type="text" name="emergency_name" placeholder="Full name">
+        </div>
+
+        <div class="form-group">
+            <label>Emergency Contact Phone</label>
+            <input type="tel" name="emergency_phone" placeholder="Phone number">
+        </div>
+
+        <div class="form-group">
+            <label>About Me</label>
+            <textarea name="about" placeholder="Write something about yourself..."></textarea>
+        </div>
+
+        <button class="save-btn" type="submit">Save Changes</button>
+    </form>
+</div>
+
+
+</body>
+</html>

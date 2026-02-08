@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - Estate Network</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static', filename='dashboard.css')}}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    html {
+  scroll-behavior: smooth;
+}
+
+* {
+  border: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+}
+
+.dashBody {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.container-box {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+/* Sidebar */
+.container {
+  padding: 0;
+  height: 100vh;
+  width: 250px;
+  background: #0B3c5D;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.container a {
+  text-decoration: none;
+  display: block;
+  padding: 18px;
+  color: #fff;
+}
+
+.container a.active {
+  background: #08304a;
+  border-left: 4px solid #2196F3;
+}
+
+.container a:hover:not(.active) {
+  background: #0a4a73;
+}
+
+/* Main content */
+.holder {
+  margin-left: 270px;
+  padding: 40px;
+  width: 100%;
+}
+
+/* Cards */
+.box {
+  width: 250px;
+  height: 140px;
+  background-color: #2196F3;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Tables */
+#myTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+#myTable th {
+  background: #0B3c5D;
+  color: #fff;
+  padding: 12px;
+}
+
+#myTable td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  
+}
+
+/* Buttons */
+.btn-primary {
+  background: #2196F3;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-danger {
+  background: #e53935;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: #0b7dda;
+}
+
+.btn-danger:hover {
+  background: #c62828;
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+  .container {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .holder {
+    margin-left: 0;
+  }
+}
+
+
+  </style>
+</head>
+
+<body>
+<section class="dashBody">
+  <div class="container-box">
+    
+    <!-- Sidebar -->
+    <div class="container" id="myCont">
+      <a href="#" class="active">Dashboard</a>
+      <a href="#posts">Manage Posts</a>
+      <a href="#users">Manage Users</a>
+      <a href="#logout">Logout</a>
+    </div>
+
+    <!-- Main Content -->
+    <div class="holder">
+
+      <h2>Admin Dashboard</h2>
+      <p>Welcome Admin. Manage posts and users here.</p>
+
+      <!-- Create Post -->
+      <section id="posts">
+        <h3>Create Post</h3>
+        <form action="{{url_for('make_post')}}" method ='post'>
+          <input name ="title" type="text" placeholder="Post title" style="width:100%; padding:10px; margin-bottom:10px;">
+          <textarea name="main_body"placeholder="Write something..." style="width:100%; padding:10px; height:120px;"></textarea>
+          <button type = "submit" class="btn-primary">Publish Post</button>
+        </form>
+
+    <!--    <h3 style="margin-top:30px;">All Posts</h3>
+        <table id="myTable">
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>Estate Maintenance Notice</td>
+            <td>Feb 4, 2026</td>
+            <td><button class="btn-danger">Delete</button></td>
+          </tr>
+        </table>
+      </section>
+
+      
+      <section id="users" style="margin-top:50px;">
+        <h3>Registered Users</h3>
+        <table id="myTable">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+          <tr>
+            <td>John Doe</td>
+            <td>john@email.com</td>
+            <td><button class="btn-danger">Delete</button></td>
+          </tr>
+        </table>
+      </section>-->
+
+    </div>
+  </div>
+</section>
+</body>
+</html>
