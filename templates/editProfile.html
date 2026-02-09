@@ -152,16 +152,13 @@
         </div>
     </div>
 
-    <form method="POST" enctype="multipart/form-data">
+    <form method="post" action = "{{url_for('sendProfile')}}">
         <div class="form-group">
-            <label>First Name</label>
-            <input type="text" name="first_name" placeholder="Enter your First name" required>
+            <label>Name</label>
+            <input type="text" name="name" placeholder="Enter your name" required>
         </div>
 
-        <div class="form-group">
-            <label>Last Name</label>
-            <input type="text" name="last_name" placeholder="Enter your Last name" required>
-        </div>
+     
 
         <div class="form-group">
             <label>Email (cannot be changed)</label>
@@ -170,12 +167,12 @@
 
         <div class="form-group">
             <label>Phone Number</label>
-            <input type="tel" name="phone" placeholder="Enter phone number" required>
+            <input type="tel" name="phoneNo" placeholder="Enter phone number" required>
         </div>
 
         <div class="form-group">
             <label>House / Flat Number</label>
-            <input type="text" name="house_no" placeholder="e.g Block A, Flat 3" required>
+            <input type="text" name="house" placeholder="e.g Block A, Flat 3" required>
         </div>
 
         <div class="form-group">

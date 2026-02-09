@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+             background: #f4f6f8
+        }
+        * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+
+      .profileLink{
+          text-decoration:none;
+          color:#fff;
+        }
+
+      a {
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+
+      header {
+        display: flex;
+        align-items: center;
+        background-color: #0B3C5D;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 90px;
+        z-index: 10;
+        padding: 0 20px;
+      }
+
+      .logo {
+        color: #fff;
+        font-weight: bold;
+        font-size: 2rem;
+      }
+
+        h2 {
+            color: #0B3c5D;
+            margin-top:120px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: #fff;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background: #0B3c5D;
+            color: #fff;
+        }
+        .no-results {
+            margin-top: 20px;
+            padding: 15px;
+            background: #ffecec;
+            color: #a94442;
+            border: 1px solid #f5c2c2;
+            border-radius: 5px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #0B3c5D;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <header>
+      <a href = "{{url_for('index')}}"><h3 class="logo">ESN</h3></a>
+    </header>
+    <h2>Search Results</h2>
+
+    {% if results and results|length > 0 %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Number</th>
+                <th>About</th>
+            </tr>
+
+            {% for user in results %}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phoneNo }}</td>
+                <td>{{ user.about }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <div class="no-results">
+            No results found for "<strong>{{ search }}</strong>".
+        </div>
+    {% endif %}
+
+    <a class="back-link" href="{{ url_for('estateNet') }}">← Back to Home Page</a>
+
+</body>
+</html>
