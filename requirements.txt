@@ -1,0 +1,8 @@
+Flask
+Flask-Session
+Flask-SQLAlchemy
+SQLAlchemy
+cloudinary
+python-dotenv
+PyMySQL
+requests
