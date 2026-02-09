@@ -10,6 +10,7 @@ import requests
 import os
 from io import BytesIO
 from dotenv import load_dotenv
+import upload
 
 app = Flask(__name__, template_folder="templates")
 
@@ -116,7 +117,8 @@ def tryRegister():
     stmt = insert(users).values(name = name, email = email, password=password, phoneNo = phoneNo)
     db.session.execute(stmt)
     db.session.commit()
-    return render_template('index.html')
+    msg="success"
+    return render_template('index.html', msg=msg)
 
 @app.route('/sendProfile', methods= ['POST'])
 def sendProfile():
@@ -129,7 +131,10 @@ def sendProfile():
     EmerContName= data['emergency_name']
     EmerContPhone = data['emergency_phone']
     about = data['about']
-    stmt = update(users).where(users.c.email==session.get("name")).values(name=name, phoneNo=phoneNo, house=house, role=role, ApartmentType=ApartmentType, EmerContName=EmerContName, EmerContPhoneno=EmerContPhone, about=about)
+    file = request.files.get('photo')
+    image = upload.uploadImage(file, name)
+
+    stmt = update(users).where(users.c.email==session.get("name")).values(name=name, phoneNo=phoneNo, house=house, role=role, ApartmentType=ApartmentType, EmerContName=EmerContName, EmerContPhoneno=EmerContPhone, about=about, image=image)
     db.session.execute(stmt)
     db.session.commit()
     return redirect(url_for('viewProfile'))
@@ -138,7 +143,9 @@ def sendProfile():
 def editProfile():
     if not session.get('name'):
         return redirect(url_for('register'))
-    return render_template('editProfile.html')
+    coll = select(users).where(users.c.email==session.get("name"))
+    user = db.session.execute(coll).fetchone()
+    return render_template('editProfile.html', user = user)
 
 @app.route('/viewProfile')
 def viewProfile():
@@ -154,7 +161,8 @@ def viewProfile():
     aptType = mainUser.ApartmentType
     emergency = mainUser.EmerContName + '-' + mainUser.EmerContPhoneno
     about = mainUser.about
-    return render_template('viewProfile.html', name=name, email=email, phoneNo=phoneNo, house=house, role=role, aptType = aptType, emergency=emergency, about=about)
+    image = mainUser.image
+    return render_template('viewProfile.html', name=name, email=email, phoneNo=phoneNo, house=house, role=role, aptType = aptType, emergency=emergency, about=about, image=image)
 
 @app.route('/delete_user/<user_id>', methods=['POST'])
 def delete_user(user_id):

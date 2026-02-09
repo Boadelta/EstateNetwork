@@ -134,7 +134,7 @@
 
 <div class="container">
     <div class="profile-pic-section">
-        <img src="https://via.placeholder.com/150" alt="Profile Picture" class="profile-pic">
+        <img src="{{ image if image else url_for('static', filename='default_icon.jpeg')}}" alt="Profile Picture" class="profile-pic">
     </div>
 
     <div>

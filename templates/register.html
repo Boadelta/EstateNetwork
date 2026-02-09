@@ -185,6 +185,11 @@
         <div class="image">
             <img src="static/estateNet.jpg" alt="cities connected to a network">
         </div>
+        {% if msg %}
+        <script>
+            alert("Incorrect password or email, try again")
+        </script>
+        {% endif %}
 
     </section>
 </section>

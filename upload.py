@@ -5,9 +5,9 @@ from dotenv import load_dotenv
 import os
 
 load_dotenv()
-NAME = os.getenv("CLOUD_NAME")
-KEY = os.getenv("API_KEY")
-SECRET = os.getenv("API_SECRET")
+NAME = "dvfzxrlxc"
+KEY = "448277556737947"
+SECRET = "nj_3CiPhi-cU5XK_QtTeTrvCLEE"
 def uploadImage(imageId, studId):
     cloudinary.config( 
     cloud_name = NAME, 
