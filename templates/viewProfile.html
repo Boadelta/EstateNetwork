@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>My Profile - Estate Network</title>
+
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
@@ -115,10 +119,49 @@
             background: #0b7dda;
         }
 
+       
         @media (max-width: 768px) {
             .container {
                 display:grid;
                 grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            header {
+                min-height: 70px;
+                height: auto;
+                padding: 10px 15px;
+                flex-wrap: wrap;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .icons i {
+                font-size: 1.5rem;
+            }
+
+            .container {
+                padding: 15px;
+                margin: 10px;
+            }
+
+            .profile-pic {
+                width: 110px;
+                height: 110px;
+            }
+
+            .info-group label,
+            .info-group p {
+                font-size: 14px;
+            }
+
+            .edit-btn {
+                width: 100%;
+                text-align: center;
             }
         }
     </style>
@@ -127,8 +170,8 @@
 
 <header>
     <a href="{{url_for('index')}}"><h3 class="logo">ESN</h3></a>
-    <div class = "icons">
-     <a href="{{url_for('estateNet')}}"><i class="fa fa-hand-o-left fa-3x" ></i></a>
+    <div class="icons">
+        <a href="{{url_for('estateNet')}}"><i class="fa fa-hand-o-left fa-3x"></i></a>
     </div>
 </header>
 
@@ -167,7 +210,6 @@
             <label>Apartment Type</label>
             <p>{{aptType}}</p>
         </div>
-
 
         <div class="info-group">
             <label>Emergency Contact</label>

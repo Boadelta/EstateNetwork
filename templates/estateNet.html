@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <title>Estate Network</title>
 
+ 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
@@ -140,49 +143,34 @@
         color: #2e2e2e;
         line-height: 1.6;
       }
-        h1{
-            text-align:center;
-            color:#0B3C5D;
-            margin-bottom:20px;
+
+      h1{
+        text-align:center;
+        color:#0B3C5D;
+        margin-bottom:20px;
+      }
+
+     
+      @media (max-width: 768px) {
+
+        header {
+          height: auto;
+          min-height: 70px;
+          padding: 10px 12px;
+          flex-wrap: wrap;
         }
-    </style>
-  </head>
 
-  <body>
-    <header>
-      <a href = "{{url_for('index')}}"><h3 class="logo">ESN</h3></a>
+        .logo {
+          font-size: 1.4rem;
+        }
 
-      <form action = "{{url_for('search_user')}}" method = 'post'class="search">
-        <input name = "search" type="search" id="searchItem" placeholder="Search for a Neighbour">
-        <button type="submit">
-          <i class="fa fa-search"></i>
-        </button>
-      </form>
+        form.search {
+          width: 100%;
+          margin: 10px 0;
+        }
 
-      <div class="profile">
-       <a class="profileLink" href = "{{url_for('viewProfile')}}"><i class="fa fa-user-circle"></i>
-        <span>Profile</span></a>
-      </div>
-    </header>
+        .profile {
+          font-size: 22px;
+        }
 
-    <div class="container">
-  <h1>WELCOME {{ name }}</h1>
-
-  {% for post in posts %}
-  <div class="post">
-    <div class="post-header">
-      <i class="fa {{ post.icon }}"></i>
-      <div class="post-title">{{ post.heading }}</div>
-      <div class="post-date">{{ post.created_at }}</div>
-    </div>
-
-    <div class="post-content">
-      {{ post.description }}
-    </div>
-  </div>
-  {% endfor %}
-
-</div>
-
-  </body>
-</html>
+        .profile sp
