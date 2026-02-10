@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <title>Login/signup</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         header{
             display:flex;
@@ -121,6 +121,25 @@
             object-fit:cover;
         }
 
+        /* Password wrappers */
+        #myPass, #myPassReg, #myCpassReg{
+            display:flex;
+            width:100%;
+            position: relative;
+            align-items: center;
+        }
+
+        #myBtn, #myBtnReg, #myCBtnReg{
+            position: absolute;
+            right: 10px;
+            background: none;
+            border: none;
+            color: #1F6AE1;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
         @media (max-width: 768px){
             .box{
                 flex-direction:column;
@@ -149,42 +168,54 @@
                 <button class="control" id="logSwitch" type="button">Login</button>
             </div>
 
-            <form action = "{{url_for('tryLogin')}}" method="post" id="login">
+            <!-- Login Form -->
+            <form action="{{url_for('tryLogin')}}" method="post" id="login">
                 <label for="email">Email</label>
-                <input name = "email" placeholder="Enter email" type="email" id="email">
+                <input name="email" placeholder="Enter email" type="email" id="email" required>
 
                 <label for="password">Password</label>
-                <input name="password" placeholder="Enter password" type="password" id="password">
+                <div id="myPass">
+                    <input name="password" placeholder="Enter password" type="password" id="password" required>
+                    <button id="myBtn" type="button">Show</button>
+                </div>
 
-                <button type="submit" class="logReg" id="loginBtn" type="button">Login</button>
+                <button type="submit" class="logReg" id="loginBtn">Login</button>
             </form>
 
-            <form action = "{{url_for('tryRegister')}}" id="register" method='post'>
-                <label for="fname">Full Name</label>
-                <input name = "fname" placeholder="Enter First name" type="text" id="fname">
+            <!-- Registration Form -->
+            <form action="{{url_for('tryRegister')}}" id="register" method="post">
+                <label for="fname">First Name</label>
+                <input name="fname" placeholder="Enter First name" type="text" id="fname" required>
 
-                <label for="lname">Full Name</label>
-                <input name = "lname" placeholder="Enter Last name" type="text" id="lname">
+                <label for="lname">Last Name</label>
+                <input name="lname" placeholder="Enter Last name" type="text" id="lname" required>
 
                 <label for="newEmail">Email</label>
-                <input name = "newEmail" placeholder="Enter email" type="email" id="newEmail">
+                <input name="newEmail" placeholder="Enter email" type="email" id="newEmail" required>
 
                 <label for="phoneNo">Phone Number</label>
-                <input name="phoneNo" placeholder="Enter phone no" type="tel" id="phoneNo">
+                <input name="phoneNo" placeholder="Enter phone no" type="tel" id="phoneNo" required>
 
                 <label for="newPassword">Password</label>
-                <input name = "newPassword" placeholder="Enter password" type="password" id="newPassword">
+                <div id="myPassReg">
+                    <input name="newPassword" placeholder="Enter password" type="password" id="newPassword" required>
+                    <button id="myBtnReg" type="button">Show</button>
+                </div>
 
                 <label for="newCPassword">Confirm Password</label>
-                <input placeholder="Confirm password" type="password" id="newCPassword">
+                <div id="myCpassReg">
+                    <input placeholder="Confirm password" type="password" id="newCPassword" required>
+                    <button id="myCBtnReg" type="button">Show</button>
+                </div>
 
-                <button type = "submit" class="logReg" id="regButton" type="button">Register</button>
+                <button type="submit" class="logReg" id="regButton">Register</button>
             </form>
         </section>
 
         <div class="image">
-            <img src="static/estateNet.jpg" alt="cities connected to a network">
+            <img src="static/estateNet.jpg" alt="cities connected via a network">
         </div>
+
         {% if msg %}
         <script>
             alert("Incorrect password or email, try again")
@@ -222,36 +253,34 @@
         logSwitch.style.color = "#FFFDFA";
     });
 
-    document.getElementById("regButton").addEventListener("click", () => {
-        const pass = document.getElementById("newPassword").value;
-        const cpass = document.getElementById("newCPassword").value;
-        const fname = document.getElementById("fname").value;
-        const newEmail = document.getElmentById("newEmail").value;
-        const phoneNo = document.getElementById("phoneNo").value;
+    // Show / Hide Login Password
+    const pwd = document.getElementById("password");
+    const toggleBtn = document.getElementById("myBtn");
 
-        if (!pass || !cpass || !newEmail || !phoneNo) {
-            alert("Please fill in all fields.");
-            return;
-        }
-
-        if (pass !== cpass) {
-            alert("Passwords do not match!");
-            return;
-        }
-
-        
+    toggleBtn.addEventListener("click", () => {
+        const isHidden = pwd.type === "password";
+        pwd.type = isHidden ? "text" : "password";
+        toggleBtn.textContent = isHidden ? "Hide" : "Show";
     });
 
-    document.getElementById("loginBtn").addEventListener("click", () => {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+    // Show / Hide Register Password
+    const regPwd = document.getElementById("newPassword");
+    const toggleRegBtn = document.getElementById("myBtnReg");
 
-        if (!email || !password) {
-            alert("Please fill in all fields.");
-            return;
-        }
+    toggleRegBtn.addEventListener("click", () => {
+        const isHidden = regPwd.type === "password";
+        regPwd.type = isHidden ? "text" : "password";
+        toggleRegBtn.textContent = isHidden ? "Hide" : "Show";
+    });
 
-        
+    // Show / Hide Confirm Password
+    const cPwd = document.getElementById("newCPassword");
+    const toggleCPwdBtn = document.getElementById("myCBtnReg");
+
+    toggleCPwdBtn.addEventListener("click", () => {
+        const isHidden = cPwd.type === "password";
+        cPwd.type = isHidden ? "text" : "password";
+        toggleCPwdBtn.textContent = isHidden ? "Hide" : "Show";
     });
 </script>
 
