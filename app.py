@@ -32,7 +32,16 @@ app.config["SESSION_TYPE"] = "filesystem"
 
 Session(app)
 #hello
-db = SQLAlchemy(app)
+db = SQLAlchemy(app, engine_options={
+    "pool_pre_ping": True,
+    "pool_recycle":120,
+    "pool_timeout":30,
+    "pool_size":3,
+    "max_overflow":2
+})
+@app.teardown_appcontext
+def shutdown_session(exception=None):
+    db.session.remove()
 
 with app.app_context():
     db.reflect()
